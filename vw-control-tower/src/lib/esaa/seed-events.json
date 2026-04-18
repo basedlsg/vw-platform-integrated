@@ -1,0 +1,99 @@
+[
+  {
+    "id": "a0000001-0000-4000-9000-000000000001",
+    "entityId": "KPI_OP_MARGIN",
+    "entityType": "KPI",
+    "type": "KpiValueUpdatedEvent",
+    "sequence": 1,
+    "timestamp": "2024-10-01T08:00:00Z",
+    "payload": {
+      "kpiId": "KPI_OP_MARGIN",
+      "newValue": 2.8,
+      "reason": "Q3 2024 actual operating margin"
+    }
+  },
+  {
+    "id": "a0000001-0000-4000-9000-000000000002",
+    "entityId": "KPI_OP_MARGIN",
+    "entityType": "KPI",
+    "type": "KpiValueUpdatedEvent",
+    "sequence": 2,
+    "timestamp": "2024-12-01T08:00:00Z",
+    "payload": {
+      "kpiId": "KPI_OP_MARGIN",
+      "newValue": 3.1,
+      "reason": "Q4 2024 partial recovery"
+    }
+  },
+  {
+    "id": "a0000002-0000-4000-9000-000000000001",
+    "entityId": "KPI_CASH_CONV",
+    "entityType": "KPI",
+    "type": "KpiValueUpdatedEvent",
+    "sequence": 1,
+    "timestamp": "2024-10-01T08:00:00Z",
+    "payload": {
+      "kpiId": "KPI_CASH_CONV",
+      "newValue": 58.0,
+      "reason": "Q3 2024 cash conversion rate"
+    }
+  },
+  {
+    "id": "a0000003-0000-4000-9000-000000000001",
+    "entityId": "KPI_BEV_SHARE",
+    "entityType": "KPI",
+    "type": "KpiValueUpdatedEvent",
+    "sequence": 1,
+    "timestamp": "2024-10-01T08:00:00Z",
+    "payload": {
+      "kpiId": "KPI_BEV_SHARE",
+      "newValue": 10.2,
+      "reason": "FY2024 BEV delivery share"
+    }
+  },
+  {
+    "id": "b0000001-0000-4000-9000-000000000001",
+    "entityId": "RISK_TARIFF_001",
+    "entityType": "RISK",
+    "type": "RiskThresholdSetEvent",
+    "sequence": 1,
+    "timestamp": "2024-10-15T10:30:00Z",
+    "payload": {
+      "riskId": "RISK_TARIFF_001",
+      "newThreshold": 2.9,
+      "impactLevel": "HIGH"
+    }
+  },
+  {
+    "id": "b0000002-0000-4000-9000-000000000001",
+    "entityId": "RISK_NEV_001",
+    "entityType": "RISK",
+    "type": "RiskThresholdSetEvent",
+    "sequence": 1,
+    "timestamp": "2024-10-15T10:30:00Z",
+    "payload": {
+      "riskId": "RISK_NEV_001",
+      "newThreshold": 35.0,
+      "impactLevel": "HIGH"
+    }
+  },
+  {
+    "id": "c0000001-0000-4000-9000-000000000001",
+    "entityId": "PROP_MARGIN_REC_001",
+    "entityType": "PROPOSAL",
+    "type": "AgentProposalCreatedEvent",
+    "sequence": 1,
+    "timestamp": "2024-11-10T14:00:00Z",
+    "payload": {
+      "proposalId": "PROP_MARGIN_REC_001",
+      "title": "Margin Recovery via Cost Reduction",
+      "description": "Proposed \u20ac1.2B fixed-cost reduction targeting 5.5% operating margin by FY2025.",
+      "suggestedAction": "Approve OPEX reduction program #2024-Q4-MARGIN",
+      "proposedStateChange": {
+        "kpis": {
+          "KPI_OP_MARGIN": { "target": 5.5 }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0f18;
+  --color-foreground: #f1f5f9;
+  --color-primary: #135bec;
+  --color-vw-primary-blue: #001E50;
+  --color-vw-secondary-blue: #00B0F0;
+  --font-sans: var(--font-inter), 'Inter', -apple-system, sans-serif;
+}
+
+/* ── CSS Custom Properties — Dark (default) ── */
+:root {
+  --bg-page:           #0a0f18;
+  --bg-sidebar:        rgba(255, 255, 255, 0.02);
+  --bg-card:           rgba(255, 255, 255, 0.03);
+  --bg-card-hover:     rgba(255, 255, 255, 0.06);
+  --bg-card-active:    rgba(19, 91, 236, 0.08);
+  --bg-surface:        rgba(255, 255, 255, 0.04);
+  --bg-modal:          rgba(10, 15, 28, 0.97);
+  --bg-input:          rgba(255, 255, 255, 0.06);
+  --bg-blue-tint:      rgba(19, 91, 236, 0.10);
+  --bg-btn-secondary:  rgba(255, 255, 255, 0.06);
+
+  --border-divider:    rgba(255, 255, 255, 0.07);
+  --border-card:       rgba(255, 255, 255, 0.08);
+  --border-subtle:     rgba(255, 255, 255, 0.06);
+  --border-input:      rgba(255, 255, 255, 0.10);
+  --border-blue:       rgba(19, 91, 236, 0.20);
+  --border-blue-hover: rgba(19, 91, 236, 0.40);
+  --border-blue-active:rgba(19, 91, 236, 0.60);
+  --border-btn-sec:    rgba(255, 255, 255, 0.10);
+
+  --text-primary:      #f1f5f9;
+  --text-secondary:    rgba(148, 163, 184, 0.80);
+  --text-body:         rgba(203, 213, 225, 0.85);
+  --text-muted:        rgba(100, 116, 139, 0.70);
+  --text-very-muted:   rgba(100, 116, 139, 0.60);
+  --text-btn-sec:      rgba(203, 213, 225, 0.80);
+
+  --overlay:           rgba(0, 0, 0, 0.70);
+
+  --scrollbar-thumb:       rgba(255, 255, 255, 0.10);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.20);
+
+  --recharts-grid: rgba(255, 255, 255, 0.06);
+  --recharts-text: rgba(148, 163, 184, 0.70);
+}
+
+/* ── CSS Custom Properties — Light ── */
+html[data-theme="light"] {
+  --bg-page:           #f0f4f8;
+  --bg-sidebar:        rgba(255, 255, 255, 0.90);
+  --bg-card:           rgba(255, 255, 255, 0.80);
+  --bg-card-hover:     rgba(255, 255, 255, 0.95);
+  --bg-card-active:    rgba(19, 91, 236, 0.06);
+  --bg-surface:        rgba(0, 0, 0, 0.03);
+  --bg-modal:          rgba(248, 250, 252, 0.98);
+  --bg-input:          rgba(0, 0, 0, 0.04);
+  --bg-blue-tint:      rgba(19, 91, 236, 0.07);
+  --bg-btn-secondary:  rgba(0, 0, 0, 0.06);
+
+  --border-divider:    rgba(0, 0, 0, 0.08);
+  --border-card:       rgba(0, 0, 0, 0.10);
+  --border-subtle:     rgba(0, 0, 0, 0.06);
+  --border-input:      rgba(0, 0, 0, 0.12);
+  --border-blue:       rgba(19, 91, 236, 0.25);
+  --border-blue-hover: rgba(19, 91, 236, 0.45);
+  --border-blue-active:rgba(19, 91, 236, 0.65);
+  --border-btn-sec:    rgba(0, 0, 0, 0.12);
+
+  --text-primary:      #0f172a;
+  --text-secondary:    rgba(30, 41, 59, 0.75);
+  --text-body:         rgba(30, 41, 59, 0.80);
+  --text-muted:        rgba(71, 85, 105, 0.70);
+  --text-very-muted:   rgba(71, 85, 105, 0.60);
+  --text-btn-sec:      rgba(15, 23, 42, 0.75);
+
+  --overlay:           rgba(0, 0, 0, 0.50);
+
+  --scrollbar-thumb:       rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+
+  --recharts-grid: rgba(0, 0, 0, 0.07);
+  --recharts-text: rgba(71, 85, 105, 0.80);
+}
+
+/* ── Base ── */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Liquid Glass Card ── */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-card);
+  transition: background 0.2s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+/* Hover lift */
+.glass-card:hover {
+  background: var(--bg-card-hover);
+}
+
+/* Active / pressed state — strong visual feedback */
+.glass-card-interactive {
+  cursor: pointer;
+}
+.glass-card-interactive:active {
+  transform: scale(0.985);
+  border-color: var(--border-blue-active) !important;
+  background: var(--bg-card-active) !important;
+  box-shadow: 0 0 0 3px rgba(19, 91, 236, 0.15), inset 0 0 20px rgba(19, 91, 236, 0.06);
+}
+
+/* Selected state (expanded card) */
+.glass-card-selected {
+  border-color: var(--border-blue-hover) !important;
+  background: var(--bg-card-active) !important;
+  box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.12);
+}
+
+/* Stronger glass for modals/overlays */
+.glass-modal {
+  background: var(--bg-modal);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-card);
+}
+
+/* Subtle inner surface */
+.glass-surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Blue highlight box */
+.glass-blue {
+  background: var(--bg-blue-tint);
+  border: 1px solid var(--border-blue);
+}
+
+/* Ambient glow under the page */
+.liquid-gradient {
+  background: radial-gradient(circle at 50% -20%, rgba(19, 91, 236, 0.12) 0%, transparent 60%);
+}
+
+/* Text glow on large numbers */
+.text-glow {
+  text-shadow: 0 0 24px rgba(19, 91, 236, 0.35);
+}
+
+/* ── Semantic text helpers (theme-aware) ── */
+.t-primary   { color: var(--text-primary); }
+.t-secondary { color: var(--text-secondary); }
+.t-body      { color: var(--text-body); }
+.t-muted     { color: var(--text-muted); }
+.t-accent    { color: #135bec; }
+
+/* ── Material Symbols ── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+/* ── Recharts ── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--recharts-grid);
+}
+.recharts-text { fill: var(--recharts-text); }
+
+/* ── Light mode: make input text visible ── */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea {
+  color: var(--text-primary);
+}
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: var(--text-muted);
+}

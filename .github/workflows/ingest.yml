@@ -1,0 +1,104 @@
+name: VW Control Tower — Data Ingestion
+
+on:
+  # Stock prices: weekdays at 18:30 UTC (after Frankfurt close)
+  schedule:
+    - cron: '30 18 * * 1-5'   # Stock — weekdays
+    - cron: '0 */6 * * *'     # News (GDELT + RSS) — every 6 hours
+    - cron: '0 9 1 * *'       # BEV share — 1st of each month at 09:00 UTC
+
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'What to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - stock
+          - news
+          - bev
+
+jobs:
+  ingest-stock:
+    name: Ingest Stock Prices
+    # Only run on weekday schedule or manual with stock/all mode
+    if: |
+      (github.event_name == 'schedule' && contains(github.event.schedule, '30 18')) ||
+      (github.event_name == 'workflow_dispatch' && (inputs.mode == 'stock' || inputs.mode == 'all'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: agents/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r agents/requirements.txt
+
+      - name: Run stock fetcher
+        working-directory: agents
+        env:
+          INGEST_URL: ${{ secrets.INGEST_URL }}
+          INGEST_API_KEY: ${{ secrets.INGEST_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python ingest_runner.py --stock --days 3
+
+  ingest-news:
+    name: Ingest News & Risk Signals
+    if: |
+      (github.event_name == 'schedule' && contains(github.event.schedule, '0 */6')) ||
+      (github.event_name == 'workflow_dispatch' && (inputs.mode == 'news' || inputs.mode == 'all'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: agents/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r agents/requirements.txt
+
+      - name: Run news fetcher (GDELT + RSS)
+        working-directory: agents
+        env:
+          INGEST_URL: ${{ secrets.INGEST_URL }}
+          INGEST_API_KEY: ${{ secrets.INGEST_API_KEY }}
+        run: python ingest_runner.py --news
+
+  ingest-bev:
+    name: Ingest BEV Share (Monthly)
+    if: |
+      (github.event_name == 'schedule' && contains(github.event.schedule, '0 9 1')) ||
+      (github.event_name == 'workflow_dispatch' && (inputs.mode == 'bev' || inputs.mode == 'all'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: agents/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r agents/requirements.txt
+
+      - name: Run BEV share fetcher
+        working-directory: agents
+        env:
+          INGEST_URL: ${{ secrets.INGEST_URL }}
+          INGEST_API_KEY: ${{ secrets.INGEST_API_KEY }}
+        run: python ingest_runner.py --bev
