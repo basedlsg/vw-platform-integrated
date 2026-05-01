@@ -26,7 +26,7 @@ export const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   const navItems = [
     { icon: 'grid_view',   label: t.nav_dashboard,  href: '/' },
-    { icon: 'newspaper',   label: t.nav_news,       href: '/agents' },
+    { icon: 'explore',     label: t.nav_strategy,   href: '/strategy' },
     { icon: 'description', label: t.nav_reports,    href: '/reports' },
     { icon: 'timeline',    label: t.nav_activity,   href: '/activity' },
   ];

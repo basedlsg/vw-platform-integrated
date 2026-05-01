@@ -100,30 +100,46 @@ export const useESAAStore = create<ESAAStore>()(
       },
 
       /**
-       * Stub function to simulate loading events from Supabase and hydrating the store.
-       * @param domainId The ID of the domain to load (e.g., 'VW_FINANCE_CONTROL_TOWER').
+       * Loads the events for every domain entity from the server and
+       * projects them into the store. Resilient: a transient failure
+       * on one entity (network blip, Supabase rate limit) does NOT
+       * wipe the rest of the dashboard. Failed entities log a warning
+       * and contribute an empty events list; the rest of the projection
+       * still hydrates.
+       *
+       * @param domainId Reserved for future multi-domain support.
        */
       loadDomain: async (_domainId: string) => {
         set({ isHydrated: false });
 
         const entityIds = [
           'KPI_OP_MARGIN', 'KPI_CASH_CONV', 'KPI_BEV_SHARE',
-          'RISK_TARIFF_001', 'RISK_NEV_001', 'PROP_MARGIN_REC_001',
+          'RISK_TARIFF_001', 'RISK_NEV_001', 'RISK_STOCK_PRESSURE', 'RISK_MARGIN_001',
+          'PROP_MARGIN_REC_001', 'PROP_BYD_PRICING', 'PROP_TARIFF_ESC',
+          'PROP_XPENG_PLATFORM', 'PROP_ACEA_BEV', 'PROP_POWERCO_DELAY',
         ];
 
-        try {
-          const results = await Promise.all(
-            entityIds.map(async (id) => {
-              const res = await fetch(`/api/esaa/events?entityId=${id}`);
-              if (!res.ok) throw new Error(`Failed to fetch events for ${id}`);
-              return res.json();
-            })
-          );
-          await get().initializeStateFromEvents(results.flat());
-        } catch (error) {
-          console.error("Store: loadDomain failed", error);
-          await get().initializeStateFromEvents([]); // unblock UI
+        const settled = await Promise.allSettled(
+          entityIds.map(async (id) => {
+            const res = await fetch(`/api/esaa/events?entityId=${id}`);
+            if (!res.ok) {
+              throw new Error(`HTTP ${res.status} for ${id}`);
+            }
+            return (await res.json()) as BaseEvent[];
+          })
+        );
+
+        const events: BaseEvent[] = [];
+        for (let i = 0; i < settled.length; i++) {
+          const result = settled[i];
+          if (result.status === 'fulfilled') {
+            events.push(...result.value);
+          } else {
+            console.warn(`Store: loadDomain skipped ${entityIds[i]}`, result.reason);
+          }
         }
+
+        await get().initializeStateFromEvents(events);
       }
       
     })),

@@ -37,12 +37,64 @@ export type RiskThresholdSetEvent = BaseEvent & {
   payload: z.infer<typeof RiskThresholdSetEventSchema>;
 };
 
+/**
+ * Strategy pillars a signal can touch. Mirrors the priorities the
+ * CFO office is currently optimizing for. Hardcoded for now; could
+ * later be driven by a separate strategy event stream.
+ */
+export const StrategyPillarSchema = z.enum([
+  'MARGIN',
+  'CASH',
+  'CHINA',
+  'EV',
+  'INVENTORY',
+  'REGULATORY',
+  'SUSTAINABILITY',
+]);
+export type StrategyPillar = z.infer<typeof StrategyPillarSchema>;
+
+/**
+ * Lightweight sensitivity model attached to a signal so the analyst
+ * can run a simple what-if without leaving the workspace. Output =
+ * outputBase + (input - inputDefault) * outputCoefficient.
+ *
+ * This is intentionally tiny — one slider in, one number out. The
+ * point is to give the team a feel for the order of magnitude, not
+ * to replace a real driver model.
+ */
+export const SignalSensitivitySchema = z.object({
+  inputLabel_en: z.string(),
+  inputLabel_zh: z.string(),
+  inputUnit: z.string(),
+  inputDefault: z.number(),
+  inputMin: z.number(),
+  inputMax: z.number(),
+  inputStep: z.number(),
+  outputLabel_en: z.string(),
+  outputLabel_zh: z.string(),
+  outputUnit: z.string(),
+  outputBase: z.number(),
+  outputCoefficient: z.number(),
+});
+export type SignalSensitivity = z.infer<typeof SignalSensitivitySchema>;
+
 export const AgentProposalCreatedEventSchema = z.object({
   proposalId: z.string(),
   title: z.string(),
   description: z.string(),
   suggestedAction: z.string(),
-  proposedStateChange: z.record(z.string(), z.any()), // Flexible payload for proposals
+  /** Flexible payload — the canonical "if approved, change X to Y" instructions. */
+  proposedStateChange: z.record(z.string(), z.any()),
+  /** Strategy pillars this signal touches; drives the "Touches:" tags on a card. */
+  touches: z.array(StrategyPillarSchema).optional(),
+  /** KPI / risk ids this signal could affect; drives the "May affect:" line. */
+  affects: z.array(z.string()).optional(),
+  /** Where the signal came from. */
+  source: z
+    .object({ publication: z.string(), date: z.string() })
+    .optional(),
+  /** Lightweight what-if model for the workspace's Simulate panel. */
+  sensitivity: SignalSensitivitySchema.optional(),
 });
 
 export type AgentProposalCreatedEvent = BaseEvent & {
@@ -50,15 +102,56 @@ export type AgentProposalCreatedEvent = BaseEvent & {
   payload: z.infer<typeof AgentProposalCreatedEventSchema>;
 };
 
+/**
+ * Full proposal lifecycle. Each value is a step in the Decision Board:
+ *   PENDING            — signal arrived, no analyst action yet
+ *   WATCHING           — analyst is tracking it, no scenario filed yet
+ *   IN_DISCUSSION      — analyst sent it out for team verification
+ *   AWAITING_APPROVAL  — discussion done, sent up to the manager
+ *   APPROVED           — manager approved, ripples committed to KPIs/risks
+ *   REJECTED           — manager rejected
+ *   DISMISSED          — analyst closed it without escalating
+ *
+ * Only the APPROVED transition writes the cascading KPI/risk events.
+ * Every other status change is logged-only — planning numbers don't move.
+ */
 export const ProposalStatusChangedEventSchema = z.object({
   proposalId: z.string(),
-  newStatus: z.enum(['APPROVED', 'REJECTED']),
+  newStatus: z.enum([
+    'PENDING',
+    'WATCHING',
+    'IN_DISCUSSION',
+    'AWAITING_APPROVAL',
+    'APPROVED',
+    'REJECTED',
+    'DISMISSED',
+  ]),
   reviewerNote: z.string().optional(),
+  /** Free-form actor label — e.g. "FP&A Analyst", "CFO Office". */
+  actor: z.string().optional(),
 });
 
 export type ProposalStatusChangedEvent = BaseEvent & {
   type: 'ProposalStatusChangedEvent';
   payload: z.infer<typeof ProposalStatusChangedEventSchema>;
+};
+
+/**
+ * One message attached to a scenario's discussion thread. Records the
+ * round-trip with a stakeholder so the audit log can replay who said
+ * what before a decision was reached.
+ */
+export const ScenarioVerificationEventSchema = z.object({
+  proposalId: z.string(),
+  /** 'OUTBOUND' = analyst asks; 'INBOUND' = stakeholder responds. */
+  direction: z.enum(['OUTBOUND', 'INBOUND']),
+  participant: z.string(),
+  message: z.string(),
+});
+
+export type ScenarioVerificationEvent = BaseEvent & {
+  type: 'ScenarioVerificationEvent';
+  payload: z.infer<typeof ScenarioVerificationEventSchema>;
 };
 
 // Union of all supported events for easier validation/handling
@@ -67,6 +160,7 @@ export const SupportedEventSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('RiskThresholdSetEvent'), payload: RiskThresholdSetEventSchema }).passthrough(),
   z.object({ type: z.literal('AgentProposalCreatedEvent'), payload: AgentProposalCreatedEventSchema }).passthrough(),
   z.object({ type: z.literal('ProposalStatusChangedEvent'), payload: ProposalStatusChangedEventSchema }).passthrough(),
+  z.object({ type: z.literal('ScenarioVerificationEvent'), payload: ScenarioVerificationEventSchema }).passthrough(),
 ]);
 
 export type SupportedEvent = z.infer<typeof SupportedEventSchema>;
@@ -95,12 +189,20 @@ export const RiskSchema = z.object({
 
 export type Risk = z.infer<typeof RiskSchema>;
 
-/** Read Model for an Agent Proposal */
+/** Read Model for an Agent Proposal / Scenario */
 export const AgentProposalSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
-  status: z.enum(['PENDING', 'APPROVED', 'REJECTED']),
+  status: z.enum([
+    'PENDING',
+    'WATCHING',
+    'IN_DISCUSSION',
+    'AWAITING_APPROVAL',
+    'APPROVED',
+    'REJECTED',
+    'DISMISSED',
+  ]),
   suggestedAction: z.string(),
   createdAt: z.string(), // ISO timestamp
 });

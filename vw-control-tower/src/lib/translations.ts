@@ -404,6 +404,91 @@ export const T = {
     sc_programs_label: 'Programs',
     sc_country_label: 'Country',
     sc_last_updated: 'Last updated',
+
+    // ----- Decision Board (home) -----
+    briefing_label: 'This morning',
+
+    signals_label: 'Signals',
+    signals_refresh: 'Refresh',
+    signals_refreshing: 'Refreshing…',
+    signals_empty: 'No signals right now. Check back later.',
+    signal_touches: 'Touches',
+    signal_may_affect: 'May affect',
+
+    queue_label: 'Waiting on a decision',
+    queue_empty: 'Nothing waiting on a manager.',
+    queue_awaiting: 'Needs your call',
+    queue_discussion: 'Still being verified',
+    queue_review: 'Review',
+    queue_view: 'View',
+
+    kpi_strip_label: 'Key numbers',
+    log_label: 'Decision log',
+
+    // Status badges
+    status_pending: 'Pending',
+    status_watching: 'Watching',
+    status_in_discussion: 'In discussion',
+    status_awaiting_approval: 'Awaiting approval',
+    status_approved: 'Approved',
+    status_rejected: 'Rejected',
+    status_dismissed: 'Dismissed',
+
+    // Workspace
+    workspace_close_aria: 'Close panel',
+    workspace_tab_overview: 'Overview',
+    workspace_tab_discuss: 'Discuss',
+    workspace_tab_simulate: 'Simulate',
+    workspace_what_happened: 'What happened',
+    workspace_why_it_matters: 'Why it matters',
+    workspace_could_affect: 'What it could affect',
+    workspace_suggested_change: 'Suggested change',
+    workspace_no_change_until_approve: 'Numbers do not change until a manager approves.',
+    workspace_action_watch: 'Watch',
+    workspace_action_discuss: 'Discuss',
+    workspace_action_simulate: 'Simulate',
+    workspace_action_submit: 'Submit for approval',
+    workspace_action_dismiss: 'Dismiss',
+    workspace_action_approve: 'Approve',
+    workspace_action_reject: 'Reject',
+
+    // Discuss
+    discuss_thread_empty: 'No messages yet. Send a question to start the thread.',
+    discuss_compose_placeholder: 'Ask a colleague to verify…',
+    discuss_send_btn: 'Send',
+    discuss_simulate_reply_btn: 'Simulate a reply',
+
+    // Simulate
+    simulate_label: 'What if',
+    simulate_explainer: 'Move the slider to see how the impact changes. This is a quick estimate, not a full forecast.',
+    simulate_estimate: 'Estimate',
+    simulate_customize: 'Customize…',
+    simulate_customize_close: 'Close customizer',
+    simulate_customize_placeholder: 'A multi-input version of this calculator will live here. For now, the single slider above is enough.',
+
+    // Decision log
+    log_empty: 'No decisions logged yet.',
+    log_col_signal: 'Signal',
+    log_col_status: 'Status',
+    log_col_ripple: 'Ripple',
+    log_col_when: 'When',
+    log_no_ripple: 'no ripple',
+    log_loading_timeline: 'Loading timeline…',
+    log_evt_AgentProposalCreatedEvent: 'Signal logged',
+    log_evt_ProposalStatusChangedEvent: 'Status changed',
+    log_evt_ScenarioVerificationEvent: 'Verification message',
+    log_evt_KpiValueUpdatedEvent: 'KPI updated',
+    log_evt_RiskThresholdSetEvent: 'Risk threshold set',
+
+    // ----- Strategy tab -----
+    nav_strategy: 'Strategy',
+    strategy_label: 'What VW is optimizing for',
+    strategy_title: 'Seven priorities, in plain English',
+    strategy_intro: 'Every signal on the home screen gets judged against this list. The count next to each pillar shows how many active items the team is currently holding against it.',
+    strategy_active_signal_singular: 'active signal',
+    strategy_active_signal_plural: 'active signals',
+    strategy_no_signals: 'no active signals',
+    strategy_footnote: 'Priorities are static for this build. A future version would let the CFO office edit them and have every change land in the same audit log as the rest of the system.',
   },
 
   zh: {
@@ -811,6 +896,91 @@ export const T = {
     sc_programs_label: '项目',
     sc_country_label: '国家',
     sc_last_updated: '最后更新',
+
+    // ----- Decision Board (home) -----
+    briefing_label: '今早观察',
+
+    signals_label: '信号',
+    signals_refresh: '刷新',
+    signals_refreshing: '正在刷新…',
+    signals_empty: '当前没有信号，稍后再来看。',
+    signal_touches: '涉及',
+    signal_may_affect: '可能影响',
+
+    queue_label: '等待决定',
+    queue_empty: '没有等待管理层的项目。',
+    queue_awaiting: '等你定夺',
+    queue_discussion: '仍在核实中',
+    queue_review: '审阅',
+    queue_view: '查看',
+
+    kpi_strip_label: '关键数据',
+    log_label: '决策日志',
+
+    // Status badges
+    status_pending: '待处理',
+    status_watching: '观察中',
+    status_in_discussion: '讨论中',
+    status_awaiting_approval: '等待审批',
+    status_approved: '已批准',
+    status_rejected: '已拒绝',
+    status_dismissed: '已关闭',
+
+    // Workspace
+    workspace_close_aria: '关闭面板',
+    workspace_tab_overview: '概览',
+    workspace_tab_discuss: '讨论',
+    workspace_tab_simulate: '模拟',
+    workspace_what_happened: '发生了什么',
+    workspace_why_it_matters: '为何重要',
+    workspace_could_affect: '可能影响',
+    workspace_suggested_change: '建议变更',
+    workspace_no_change_until_approve: '在管理层批准之前，数据不会变更。',
+    workspace_action_watch: '观察',
+    workspace_action_discuss: '讨论',
+    workspace_action_simulate: '模拟',
+    workspace_action_submit: '提交审批',
+    workspace_action_dismiss: '关闭',
+    workspace_action_approve: '批准',
+    workspace_action_reject: '拒绝',
+
+    // Discuss
+    discuss_thread_empty: '暂无消息。发送一条问题即可开始会话。',
+    discuss_compose_placeholder: '请同事核实…',
+    discuss_send_btn: '发送',
+    discuss_simulate_reply_btn: '模拟回复',
+
+    // Simulate
+    simulate_label: '假设',
+    simulate_explainer: '移动滑块即可查看影响如何变化。这是一个快速估算，并非完整预测。',
+    simulate_estimate: '估算',
+    simulate_customize: '自定义…',
+    simulate_customize_close: '关闭自定义',
+    simulate_customize_placeholder: '未来这里可输入多个变量。当前先用单滑块即可。',
+
+    // Decision log
+    log_empty: '尚未记录任何决策。',
+    log_col_signal: '信号',
+    log_col_status: '状态',
+    log_col_ripple: '影响',
+    log_col_when: '时间',
+    log_no_ripple: '无影响',
+    log_loading_timeline: '正在加载时间线…',
+    log_evt_AgentProposalCreatedEvent: '信号录入',
+    log_evt_ProposalStatusChangedEvent: '状态变更',
+    log_evt_ScenarioVerificationEvent: '核实消息',
+    log_evt_KpiValueUpdatedEvent: 'KPI 更新',
+    log_evt_RiskThresholdSetEvent: '风险阈值设定',
+
+    // ----- Strategy tab -----
+    nav_strategy: '战略',
+    strategy_label: '大众正在优化的目标',
+    strategy_title: '七项优先事项，简明表述',
+    strategy_intro: '主屏上的每条信号都依据此列表来衡量。每个支柱旁的数字表示团队当前在该支柱下处理的活跃事项数。',
+    strategy_active_signal_singular: '条活跃信号',
+    strategy_active_signal_plural: '条活跃信号',
+    strategy_no_signals: '无活跃信号',
+    strategy_footnote: '本版本中优先事项为静态。未来可由首席财务官办公室进行编辑，每次变更都会与其他事件一同落入同一审计日志。',
   },
 } as const;
 

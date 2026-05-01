@@ -1,99 +1,190 @@
 [
-  {
-    "id": "a0000001-0000-4000-9000-000000000001",
-    "entityId": "KPI_OP_MARGIN",
-    "entityType": "KPI",
-    "type": "KpiValueUpdatedEvent",
-    "sequence": 1,
-    "timestamp": "2024-10-01T08:00:00Z",
-    "payload": {
-      "kpiId": "KPI_OP_MARGIN",
-      "newValue": 2.8,
-      "reason": "Q3 2024 actual operating margin"
-    }
-  },
-  {
-    "id": "a0000001-0000-4000-9000-000000000002",
-    "entityId": "KPI_OP_MARGIN",
-    "entityType": "KPI",
-    "type": "KpiValueUpdatedEvent",
-    "sequence": 2,
-    "timestamp": "2024-12-01T08:00:00Z",
-    "payload": {
-      "kpiId": "KPI_OP_MARGIN",
-      "newValue": 3.1,
-      "reason": "Q4 2024 partial recovery"
-    }
-  },
-  {
-    "id": "a0000002-0000-4000-9000-000000000001",
-    "entityId": "KPI_CASH_CONV",
-    "entityType": "KPI",
-    "type": "KpiValueUpdatedEvent",
-    "sequence": 1,
-    "timestamp": "2024-10-01T08:00:00Z",
-    "payload": {
-      "kpiId": "KPI_CASH_CONV",
-      "newValue": 58.0,
-      "reason": "Q3 2024 cash conversion rate"
-    }
-  },
-  {
-    "id": "a0000003-0000-4000-9000-000000000001",
-    "entityId": "KPI_BEV_SHARE",
-    "entityType": "KPI",
-    "type": "KpiValueUpdatedEvent",
-    "sequence": 1,
-    "timestamp": "2024-10-01T08:00:00Z",
-    "payload": {
-      "kpiId": "KPI_BEV_SHARE",
-      "newValue": 10.2,
-      "reason": "FY2024 BEV delivery share"
-    }
-  },
-  {
-    "id": "b0000001-0000-4000-9000-000000000001",
-    "entityId": "RISK_TARIFF_001",
-    "entityType": "RISK",
-    "type": "RiskThresholdSetEvent",
-    "sequence": 1,
-    "timestamp": "2024-10-15T10:30:00Z",
-    "payload": {
-      "riskId": "RISK_TARIFF_001",
-      "newThreshold": 2.9,
-      "impactLevel": "HIGH"
-    }
-  },
-  {
-    "id": "b0000002-0000-4000-9000-000000000001",
-    "entityId": "RISK_NEV_001",
-    "entityType": "RISK",
-    "type": "RiskThresholdSetEvent",
-    "sequence": 1,
-    "timestamp": "2024-10-15T10:30:00Z",
-    "payload": {
-      "riskId": "RISK_NEV_001",
-      "newThreshold": 35.0,
-      "impactLevel": "HIGH"
-    }
-  },
-  {
-    "id": "c0000001-0000-4000-9000-000000000001",
-    "entityId": "PROP_MARGIN_REC_001",
-    "entityType": "PROPOSAL",
-    "type": "AgentProposalCreatedEvent",
-    "sequence": 1,
-    "timestamp": "2024-11-10T14:00:00Z",
-    "payload": {
+  { "id": "a0000001-0000-4000-9000-000000000001", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 1,  "timestamp": "2022-03-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 7.9, "reason": "Q1 2022 actuals — VW Group Interim Report Q1/2022" } },
+  { "id": "a0000001-0000-4000-9000-000000000002", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 2,  "timestamp": "2022-06-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 7.5, "reason": "Q2 2022 actuals — supply chip shortage drag" } },
+  { "id": "a0000001-0000-4000-9000-000000000003", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 3,  "timestamp": "2022-09-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 8.1, "reason": "Q3 2022 actuals — pricing power offsets input inflation" } },
+  { "id": "a0000001-0000-4000-9000-000000000004", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 4,  "timestamp": "2022-12-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 8.3, "reason": "FY2022 close — VW Group Annual Report 2022" } },
+  { "id": "a0000001-0000-4000-9000-000000000005", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 5,  "timestamp": "2023-03-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 7.1, "reason": "Q1 2023 actuals — raw-material cost normalization begins" } },
+  { "id": "a0000001-0000-4000-9000-000000000006", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 6,  "timestamp": "2023-06-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 6.6, "reason": "Q2 2023 actuals — China pricing pressure intensifies" } },
+  { "id": "a0000001-0000-4000-9000-000000000007", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 7,  "timestamp": "2023-09-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 6.2, "reason": "Q3 2023 actuals — BEV ramp drag on mix" } },
+  { "id": "a0000001-0000-4000-9000-000000000008", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 8,  "timestamp": "2023-12-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 7.0, "reason": "FY2023 close — VW Group Annual Report 2023" } },
+  { "id": "a0000001-0000-4000-9000-000000000009", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 9,  "timestamp": "2024-03-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 6.1, "reason": "Q1 2024 actuals — China volume softens, mix deteriorates" } },
+  { "id": "a0000001-0000-4000-9000-000000000010", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 10, "timestamp": "2024-06-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 2.3, "reason": "H1 2024 Half-Year Report — profit warning issued, margin collapses" } },
+  { "id": "a0000001-0000-4000-9000-000000000011", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 11, "timestamp": "2024-09-30T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 2.8, "reason": "Q3 2024 actuals — €3.6B restructuring provisions booked" } },
+  { "id": "a0000001-0000-4000-9000-000000000012", "entityId": "KPI_OP_MARGIN", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 12, "timestamp": "2024-12-31T08:00:00Z", "payload": { "kpiId": "KPI_OP_MARGIN", "newValue": 3.1, "reason": "Q4 2024 actuals — first signs of €10B cost program traction" } },
+
+  { "id": "a0000002-0000-4000-9000-000000000001", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 1,  "timestamp": "2022-03-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 81.0, "reason": "Q1 2022 — strong working-capital release" } },
+  { "id": "a0000002-0000-4000-9000-000000000002", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 2,  "timestamp": "2022-06-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 76.0, "reason": "Q2 2022 — inventory build ahead of SOP" } },
+  { "id": "a0000002-0000-4000-9000-000000000003", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 3,  "timestamp": "2022-09-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 74.0, "reason": "Q3 2022 — elevated capex for PowerCo and SSP" } },
+  { "id": "a0000002-0000-4000-9000-000000000004", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 4,  "timestamp": "2022-12-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 72.0, "reason": "FY2022 close — capex intensity rising" } },
+  { "id": "a0000002-0000-4000-9000-000000000005", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 5,  "timestamp": "2023-03-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 69.0, "reason": "Q1 2023 — Salzgitter gigafactory ramp cash drag" } },
+  { "id": "a0000002-0000-4000-9000-000000000006", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 6,  "timestamp": "2023-06-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 66.0, "reason": "Q2 2023 — BEV inventory build in EU" } },
+  { "id": "a0000002-0000-4000-9000-000000000007", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 7,  "timestamp": "2023-09-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 62.0, "reason": "Q3 2023 — SSP platform pre-series capex" } },
+  { "id": "a0000002-0000-4000-9000-000000000008", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 8,  "timestamp": "2023-12-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 64.0, "reason": "FY2023 close — partial year-end release" } },
+  { "id": "a0000002-0000-4000-9000-000000000009", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 9,  "timestamp": "2024-03-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 60.0, "reason": "Q1 2024 — China receivables stretch" } },
+  { "id": "a0000002-0000-4000-9000-000000000010", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 10, "timestamp": "2024-06-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 55.0, "reason": "H1 2024 — profit warning period, cash conversion hit" } },
+  { "id": "a0000002-0000-4000-9000-000000000011", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 11, "timestamp": "2024-09-30T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 58.0, "reason": "Q3 2024 — restructuring cash outflows begin" } },
+  { "id": "a0000002-0000-4000-9000-000000000012", "entityId": "KPI_CASH_CONV", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 12, "timestamp": "2024-12-31T08:00:00Z", "payload": { "kpiId": "KPI_CASH_CONV", "newValue": 61.0, "reason": "Q4 2024 — working-capital release cushions cost program" } },
+
+  { "id": "a0000003-0000-4000-9000-000000000001", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 1,  "timestamp": "2022-03-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 5.2,  "reason": "Q1 2022 — ID.3 / ID.4 ramp" } },
+  { "id": "a0000003-0000-4000-9000-000000000002", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 2,  "timestamp": "2022-06-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 6.0,  "reason": "Q2 2022 — EU order book strong" } },
+  { "id": "a0000003-0000-4000-9000-000000000003", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 3,  "timestamp": "2022-09-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 6.8,  "reason": "Q3 2022 — Zwickau line at capacity" } },
+  { "id": "a0000003-0000-4000-9000-000000000004", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 4,  "timestamp": "2022-12-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 7.3,  "reason": "FY2022 — BEV deliveries 572k (7.3% share)" } },
+  { "id": "a0000003-0000-4000-9000-000000000005", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 5,  "timestamp": "2023-03-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 7.5,  "reason": "Q1 2023 — China BEV demand slowing" } },
+  { "id": "a0000003-0000-4000-9000-000000000006", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 6,  "timestamp": "2023-06-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 8.2,  "reason": "Q2 2023 — ID.7 launch boost in EU" } },
+  { "id": "a0000003-0000-4000-9000-000000000007", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 7,  "timestamp": "2023-09-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 8.9,  "reason": "Q3 2023 — BYD price cuts pressure China volume" } },
+  { "id": "a0000003-0000-4000-9000-000000000008", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 8,  "timestamp": "2023-12-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 8.3,  "reason": "FY2023 close — 771k BEVs but share flat" } },
+  { "id": "a0000003-0000-4000-9000-000000000009", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 9,  "timestamp": "2024-03-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 7.8,  "reason": "Q1 2024 — China share loss accelerates" } },
+  { "id": "a0000003-0000-4000-9000-000000000010", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 10, "timestamp": "2024-06-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 8.9,  "reason": "H1 2024 — EU incentive pull-forward in Germany" } },
+  { "id": "a0000003-0000-4000-9000-000000000011", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 11, "timestamp": "2024-09-30T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 9.5,  "reason": "Q3 2024 — ID.7 Tourer + ID. Buzz lift mix" } },
+  { "id": "a0000003-0000-4000-9000-000000000012", "entityId": "KPI_BEV_SHARE", "entityType": "KPI", "type": "KpiValueUpdatedEvent", "sequence": 12, "timestamp": "2024-12-31T08:00:00Z", "payload": { "kpiId": "KPI_BEV_SHARE", "newValue": 10.2, "reason": "FY2024 close — 745k BEVs, share at 10.2%" } },
+
+  { "id": "b0000001-0000-4000-9000-000000000001", "entityId": "RISK_TARIFF_001",     "entityType": "RISK", "type": "RiskThresholdSetEvent", "sequence": 1, "timestamp": "2024-10-15T10:30:00Z", "payload": { "riskId": "RISK_TARIFF_001",     "newThreshold": 2.9,  "impactLevel": "HIGH"   } },
+  { "id": "b0000002-0000-4000-9000-000000000001", "entityId": "RISK_NEV_001",        "entityType": "RISK", "type": "RiskThresholdSetEvent", "sequence": 1, "timestamp": "2024-10-15T10:30:00Z", "payload": { "riskId": "RISK_NEV_001",        "newThreshold": 35.0, "impactLevel": "HIGH"   } },
+  { "id": "b0000003-0000-4000-9000-000000000001", "entityId": "RISK_STOCK_PRESSURE", "entityType": "RISK", "type": "RiskThresholdSetEvent", "sequence": 1, "timestamp": "2024-10-15T10:30:00Z", "payload": { "riskId": "RISK_STOCK_PRESSURE", "newThreshold": 95.0, "impactLevel": "MEDIUM" } },
+  { "id": "b0000004-0000-4000-9000-000000000001", "entityId": "RISK_MARGIN_001",     "entityType": "RISK", "type": "RiskThresholdSetEvent", "sequence": 1, "timestamp": "2024-10-15T10:30:00Z", "payload": { "riskId": "RISK_MARGIN_001",     "newThreshold": 5.5,  "impactLevel": "HIGH"   } },
+
+  { "id": "c0000001-0000-4000-9000-000000000001", "entityId": "PROP_MARGIN_REC_001", "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2024-11-10T14:00:00Z", "payload": {
       "proposalId": "PROP_MARGIN_REC_001",
-      "title": "Margin Recovery via Cost Reduction",
-      "description": "Proposed \u20ac1.2B fixed-cost reduction targeting 5.5% operating margin by FY2025.",
+      "title": "Margin recovery via cost reduction",
+      "description": "€1.2B fixed-cost reduction program targeting 5.5% operating margin by FY2025.",
       "suggestedAction": "Approve OPEX reduction program #2024-Q4-MARGIN",
-      "proposedStateChange": {
-        "kpis": {
-          "KPI_OP_MARGIN": { "target": 5.5 }
-        }
+      "touches": ["MARGIN", "CASH"],
+      "affects": ["KPI_OP_MARGIN"],
+      "source": { "publication": "VW Q3 2024 Investor Call", "date": "2024-10-30" },
+      "proposedStateChange": { "kpis": { "KPI_OP_MARGIN": { "target": 5.5 } } },
+      "sensitivity": {
+        "inputLabel_en": "Cost-program execution rate",
+        "inputLabel_zh": "成本计划执行率",
+        "inputUnit": "%",
+        "inputDefault": 80,
+        "inputMin": 0,
+        "inputMax": 120,
+        "inputStep": 5,
+        "outputLabel_en": "Estimated operating margin in FY2025",
+        "outputLabel_zh": "估计FY2025营业利润率",
+        "outputUnit": "%",
+        "outputBase": 3.1,
+        "outputCoefficient": 0.03
       }
-    }
-  }
+  } },
+  { "id": "c0000002-0000-4000-9000-000000000001", "entityId": "PROP_BYD_PRICING",     "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2025-01-08T09:15:00Z", "payload": {
+      "proposalId": "PROP_BYD_PRICING",
+      "title": "BYD cuts EV prices in China",
+      "description": "BYD reduced its Han EV entry trim by 9% on Jan 5, widening the price gap vs. ID.7 by an additional €1,200/unit in the China mid-size BEV segment.",
+      "suggestedAction": "Open a China BEV downside scenario if pressure persists 2 quarters",
+      "touches": ["CHINA", "EV", "MARGIN"],
+      "affects": ["KPI_BEV_SHARE", "KPI_OP_MARGIN"],
+      "source": { "publication": "CAAM · Handelsblatt", "date": "2025-01-06" },
+      "proposedStateChange": { "kpis": { "KPI_BEV_SHARE": { "target": 10.8 } } },
+      "sensitivity": {
+        "inputLabel_en": "Additional BYD price gap (pp)",
+        "inputLabel_zh": "BYD价差增幅（pp）",
+        "inputUnit": "pp",
+        "inputDefault": 5,
+        "inputMin": 0,
+        "inputMax": 15,
+        "inputStep": 0.5,
+        "outputLabel_en": "Estimated BEV-share impact in 2 quarters",
+        "outputLabel_zh": "2季度内BEV占比估计影响",
+        "outputUnit": "pp",
+        "outputBase": 0,
+        "outputCoefficient": -0.06
+      }
+  } },
+  { "id": "c0000003-0000-4000-9000-000000000001", "entityId": "PROP_TARIFF_ESC",      "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2025-02-03T16:40:00Z", "payload": {
+      "proposalId": "PROP_TARIFF_ESC",
+      "title": "US 25% import tariff moving to Senate vote",
+      "description": "Bipartisan bill reached committee markup on Feb 2. If enacted, ~€2.9B annualized exposure to VW Group on Audi and Porsche imports.",
+      "suggestedAction": "Scenario-plan USMCA routing for Audi Q5",
+      "touches": ["REGULATORY", "MARGIN", "CASH"],
+      "affects": ["KPI_OP_MARGIN", "KPI_CASH_CONV"],
+      "source": { "publication": "USTR · Reuters", "date": "2025-02-02" },
+      "proposedStateChange": { "risks": { "RISK_TARIFF_001": { "threshold": 3.4, "impact": "HIGH" } } },
+      "sensitivity": {
+        "inputLabel_en": "Tariff rate if enacted",
+        "inputLabel_zh": "如获通过的关税率",
+        "inputUnit": "%",
+        "inputDefault": 25,
+        "inputMin": 0,
+        "inputMax": 35,
+        "inputStep": 1,
+        "outputLabel_en": "Annualized exposure",
+        "outputLabel_zh": "年化敏感敷口",
+        "outputUnit": "€B",
+        "outputBase": 0,
+        "outputCoefficient": 0.116
+      }
+  } },
+  { "id": "c0000004-0000-4000-9000-000000000001", "entityId": "PROP_XPENG_PLATFORM",  "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2025-02-18T11:25:00Z", "payload": {
+      "proposalId": "PROP_XPENG_PLATFORM",
+      "title": "XPENG co-developed platform reaches A-sample validation",
+      "description": "CMP partnership with XPENG entered A-sample validation ahead of Q2 schedule; first shared ECU stacks expected by Q3 2025.",
+      "suggestedAction": "Track upside scenario for China CMP trajectory",
+      "touches": ["CHINA", "EV"],
+      "affects": ["KPI_BEV_SHARE"],
+      "source": { "publication": "VW Group IR · CnEVPost", "date": "2025-02-17" },
+      "proposedStateChange": { "kpis": { "KPI_BEV_SHARE": { "target": 12.0 } } },
+      "sensitivity": {
+        "inputLabel_en": "China BEV cost-parity progress",
+        "inputLabel_zh": "中国BEV成本平价进度",
+        "inputUnit": "%",
+        "inputDefault": 60,
+        "inputMin": 30,
+        "inputMax": 100,
+        "inputStep": 5,
+        "outputLabel_en": "Estimated BEV share by FY2026",
+        "outputLabel_zh": "估计FY2026 BEV占比",
+        "outputUnit": "%",
+        "outputBase": 8.5,
+        "outputCoefficient": 0.04
+      }
+  } },
+  { "id": "c0000005-0000-4000-9000-000000000001", "entityId": "PROP_ACEA_BEV",        "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2025-03-04T08:00:00Z", "payload": {
+      "proposalId": "PROP_ACEA_BEV",
+      "title": "EU BEV share rises to 15.4% — VW down 0.4pp",
+      "description": "ACEA published Feb 2025 car registrations: EU BEV share 15.4% (+0.3pp MoM). VW Group held 11.3% of the EU BEV segment, down 0.4pp vs. Jan.",
+      "suggestedAction": "Open share-erosion scenario if 2 more periods print red",
+      "touches": ["EV"],
+      "affects": ["KPI_BEV_SHARE"],
+      "source": { "publication": "ACEA · Automotive News", "date": "2025-03-04" },
+      "proposedStateChange": { "kpis": { "KPI_BEV_SHARE": { "target": 10.5 } }, "risks": { "RISK_NEV_001": { "threshold": 34.0, "impact": "HIGH" } } },
+      "sensitivity": {
+        "inputLabel_en": "EU monthly share change (pp)",
+        "inputLabel_zh": "欧盟月份占比变化（pp）",
+        "inputUnit": "pp",
+        "inputDefault": -0.4,
+        "inputMin": -2,
+        "inputMax": 2,
+        "inputStep": 0.1,
+        "outputLabel_en": "Forecast BEV share end of 2025",
+        "outputLabel_zh": "2025年底BEV占比预测",
+        "outputUnit": "%",
+        "outputBase": 10.2,
+        "outputCoefficient": 4
+      }
+  } },
+  { "id": "c0000006-0000-4000-9000-000000000001", "entityId": "PROP_POWERCO_DELAY",   "entityType": "PROPOSAL", "type": "AgentProposalCreatedEvent", "sequence": 1, "timestamp": "2025-03-21T13:00:00Z", "payload": {
+      "proposalId": "PROP_POWERCO_DELAY",
+      "title": "PowerCo Salzgitter cell ramp delayed 6 weeks",
+      "description": "Handelsblatt reported a 6-week slip on Salzgitter unified cell SOP due to equipment qualification issues. Cash-conversion drag expected to persist into Q2.",
+      "suggestedAction": "Add to cash-conversion watchlist; review weekly",
+      "touches": ["CASH", "INVENTORY"],
+      "affects": ["KPI_CASH_CONV"],
+      "source": { "publication": "Handelsblatt", "date": "2025-03-20" },
+      "proposedStateChange": { "kpis": { "KPI_CASH_CONV": { "target": 58.0 } }, "risks": { "RISK_STOCK_PRESSURE": { "threshold": 92.0, "impact": "MEDIUM" } } },
+      "sensitivity": {
+        "inputLabel_en": "Salzgitter delay (weeks)",
+        "inputLabel_zh": "萨尔茨格特延误（周）",
+        "inputUnit": "wk",
+        "inputDefault": 6,
+        "inputMin": 0,
+        "inputMax": 24,
+        "inputStep": 1,
+        "outputLabel_en": "Estimated cash-conversion drag",
+        "outputLabel_zh": "现金转化拖累估计",
+        "outputUnit": "pp",
+        "outputBase": 0,
+        "outputCoefficient": -0.5
+      }
+  } }
 ]
