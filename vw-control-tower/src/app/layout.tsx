@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VW Finance Control Tower",
-  description: "VW Group finance governance platform",
+  title: "Nemu — Finance Decision Board",
+  description: "A calm decision board for finance teams. Turn signals into scenarios, verify with the right people, approve, and track the ripple.",
 };
 
 export default function RootLayout({

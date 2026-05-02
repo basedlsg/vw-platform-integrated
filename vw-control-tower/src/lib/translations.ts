@@ -5,8 +5,8 @@ export const T = {
     nav_news: 'News & Alerts',
     nav_reports: 'Reports',
     nav_activity: 'Activity',
-    app_name: 'VW Finance',
-    app_subtitle: 'Control Tower',
+    app_name: 'Nemu',
+    app_subtitle: 'Finance Decision Board',
     app_footer: 'VW Group · Finance Division',
 
     // KPI Section
@@ -162,7 +162,7 @@ export const T = {
 
     // Config page
     config_title: 'Configuration',
-    config_subtitle: 'System settings and status for the VW Finance Control Tower',
+    config_subtitle: 'System settings and status for Nemu.',
     config_system_status: 'System Status',
     config_global_seq: 'Global Sequence',
     config_total_events: 'Total events in event store',
@@ -176,7 +176,7 @@ export const T = {
     config_proposals: 'Proposals',
     config_pending: 'Pending',
     config_api_title: 'API Endpoints',
-    config_api_desc: 'These endpoints are available for integrating external systems with the Control Tower event store.',
+    config_api_desc: 'These endpoints are available for integrating external systems with the Nemu event store.',
     config_api_get_proposals: 'Fetch all proposals with their current status',
     config_api_post_proposals: 'Create a new proposal for review',
     config_api_ingest: 'Ingest new events from external data sources',
@@ -194,7 +194,7 @@ export const T = {
 
     // History page
     history_title: 'Event History',
-    history_subtitle: 'Complete timeline of all data changes and proposals in the Control Tower',
+    history_subtitle: 'Complete timeline of all data changes and proposals in Nemu.',
     history_filter_all: '📋 All Events',
     history_filter_kpi: '📊 KPIs',
     history_filter_risk: '⚠️ Risks',
@@ -497,8 +497,8 @@ export const T = {
     nav_news: '新闻与警报',
     nav_reports: '报告',
     nav_activity: '活动记录',
-    app_name: '大众财务',
-    app_subtitle: '控制塔',
+    app_name: 'Nemu',
+    app_subtitle: '财务决策板',
     app_footer: '大众集团 · 财务部',
 
     // KPI Section
@@ -654,7 +654,7 @@ export const T = {
 
     // Config page
     config_title: '系统配置',
-    config_subtitle: 'VW财务控制塔的系统设置和状态',
+    config_subtitle: 'Nemu 的系统设置和状态。',
     config_system_status: '系统状态',
     config_global_seq: '全局序列号',
     config_total_events: '事件存储中的总事件数',
@@ -668,7 +668,7 @@ export const T = {
     config_proposals: '提案',
     config_pending: '待处理',
     config_api_title: 'API 接口',
-    config_api_desc: '以下接口可用于将外部系统与控制塔事件存储集成。',
+    config_api_desc: '以下接口可用于将外部系统与 Nemu 事件存储集成。',
     config_api_get_proposals: '获取所有提案及其当前状态',
     config_api_post_proposals: '创建新的审核提案',
     config_api_ingest: '从外部数据源导入新事件',
@@ -686,7 +686,7 @@ export const T = {
 
     // History page
     history_title: '事件历史',
-    history_subtitle: '控制塔中所有数据变更和提案的完整时间线',
+    history_subtitle: 'Nemu 中所有数据变更和提案的完整时间线。',
     history_filter_all: '📋 全部事件',
     history_filter_kpi: '📊 KPI指标',
     history_filter_risk: '⚠️ 风险',

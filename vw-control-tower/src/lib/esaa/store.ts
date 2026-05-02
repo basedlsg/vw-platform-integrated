@@ -145,8 +145,13 @@ export const useESAAStore = create<ESAAStore>()(
     })),
     {
       name: 'esaa-storage', // unique name
-      storage: createJSONStorage(() => localStorage), // Use localStorage stub
-      partialize: (state) => ({ state: state.state, isHydrated: state.isHydrated }),
+      version: 2, // bump when the persisted shape changes — invalidates stale browser caches
+      storage: createJSONStorage(() => localStorage),
+      // Discard the persisted hydration flag so the store always re-projects
+      // from fresh events on first render. Persisting state without
+      // re-running materialize led to white screens after schema changes
+      // (e.g. new proposal statuses) in browsers carrying the old cache.
+      partialize: () => ({}),
     }
   )
 );
