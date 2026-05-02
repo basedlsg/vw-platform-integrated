@@ -30,7 +30,7 @@ export async function POST(
       payload: {
         kpiId: id,
         newValue: body.value,
-        reason: body.reason || 'Manual update via Control Tower',
+        reason: body.reason || 'Manual update via Nemu',
       },
     });
 

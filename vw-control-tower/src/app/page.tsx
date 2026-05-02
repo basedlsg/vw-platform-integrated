@@ -15,7 +15,7 @@ import { T } from "@/lib/translations";
 import type { AgentProposal, BaseEvent } from "@/lib/esaa/types";
 
 /**
- * VW Finance Decision Board.
+ * Nemu — Finance Decision Board home screen.
  *
  * Calm one-page workflow built around the user's spec: open it, see
  * what changed, understand why, decide, move on.
