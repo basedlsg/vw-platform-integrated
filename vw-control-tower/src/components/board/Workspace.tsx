@@ -102,21 +102,41 @@ export const Workspace: React.FC<Props> = ({
 
     (async () => {
       try {
+        // Pull institutional memory before composing the prompt — past
+        // decisions on the same pillars / KPIs become part of the
+        // context so the explanation can reference them.
+        let recallText = '';
+        try {
+          const recallRes = await fetch('/api/memory/recall', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ proposalId: proposal.id, limit: 4, lang }),
+            signal: ctrl.signal,
+          });
+          if (recallRes.ok) {
+            const recallData = (await recallRes.json()) as { promptText?: string };
+            recallText = recallData.promptText ?? '';
+          }
+        } catch {
+          /* recall is best-effort */
+        }
+
         const ctx = [
           `Signal: ${view.title}`,
           `Description: ${view.description}`,
           `Strategy pillars touched: ${view.touches.join(', ') || 'none declared'}`,
           `KPIs/risks possibly affected: ${view.affects.join(', ') || 'none'}`,
+          ...(recallText ? ['', recallText] : []),
         ].join('\n');
 
         const question = lang === 'zh'
-          ? `请用1-2句中文写"为什么重要"——简洁、客观、无 markdown，无前言。`
-          : `In 1-2 plain English sentences, explain why this signal matters to VW Group. Calm, factual, no markdown, no bullets, no preamble.`;
+          ? `请用1-2句中文写"为什么重要"——简洁、客观、无 markdown，无前言。如果有过去同类决策，可以提及一句"上次类似情况下，团队做了 X"，但只在数据真实的情况下，不要捏造。`
+          : `In 1-2 plain English sentences, explain why this signal matters to VW Group. Calm, factual, no markdown, no bullets, no preamble. If there is relevant past-decision context, you may include one short clause like "last time something similar came up the team did X" — but only if the data supports it; do not invent.`;
 
         const res = await fetch('/api/ask', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question, context: ctx, maxTokens: 140 }),
+          body: JSON.stringify({ question, context: ctx, maxTokens: 180 }),
           signal: ctrl.signal,
         });
         if (cancelled) return;
@@ -578,6 +598,24 @@ const DiscussBody: React.FC<{
         .map((e) => `${e.participant}: ${e.message}`)
         .join('\n');
 
+      // Past decisions on the same pillars — gives the simulated
+      // stakeholder a way to say "we already decided X last quarter"
+      // when that's actually true.
+      let recallText = '';
+      try {
+        const recallRes = await fetch('/api/memory/recall', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ proposalId: proposalId, limit: 3, lang }),
+        });
+        if (recallRes.ok) {
+          const recallData = (await recallRes.json()) as { promptText?: string };
+          recallText = recallData.promptText ?? '';
+        }
+      } catch {
+        /* recall is best-effort */
+      }
+
       const ctx = [
         `Signal: ${view.title}`,
         `Description: ${view.description}`,
@@ -585,6 +623,7 @@ const DiscussBody: React.FC<{
         `KPIs/risks possibly affected: ${view.affects.join(', ') || 'none'}`,
         '',
         `You are ${stakeholder} at VW Group, replying inside the Decision Board to the FP&A analyst.`,
+        ...(recallText ? ['', recallText] : []),
         '',
         `Conversation so far:`,
         conversation || '(analyst has not asked anything yet)',

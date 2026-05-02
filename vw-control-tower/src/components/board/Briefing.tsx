@@ -65,12 +65,48 @@ export const Briefing: React.FC = () => {
         .map((p) => `- ${p.title} (status: ${p.status})`)
         .join('\n');
 
+      // Pull institutional memory: past decisions touching the same
+      // pillars / KPIs as anything currently active, so the briefing
+      // can ground its tone in what the team has already decided.
+      const allTouches = new Set<string>();
+      const allAffects = new Set<string>();
+      for (const p of activeProps) {
+        const evRes = await fetch(`/api/esaa/events?entityId=${p.id}`).catch(() => null);
+        if (!evRes || !evRes.ok) continue;
+        const evs = (await evRes.json()) as Array<{ type: string; payload: { touches?: string[]; affects?: string[] } }>;
+        const created = evs.find((e) => e.type === 'AgentProposalCreatedEvent');
+        for (const t of created?.payload.touches ?? []) allTouches.add(t);
+        for (const a of created?.payload.affects ?? []) allAffects.add(a);
+      }
+      let recallText = '';
+      if (allTouches.size > 0 || allAffects.size > 0) {
+        try {
+          const recallRes = await fetch('/api/memory/recall', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              touches: [...allTouches],
+              affects: [...allAffects],
+              limit: 4,
+              lang,
+            }),
+          });
+          if (recallRes.ok) {
+            const recallData = (await recallRes.json()) as { promptText?: string };
+            recallText = recallData.promptText ?? '';
+          }
+        } catch {
+          /* memory recall is best-effort — never blocks the briefing */
+        }
+      }
+
       const ctx = [
         'Current VW Group KPIs:',
         kpiLines || '(no KPI data yet)',
         '',
         'Active signals in the queue:',
         activeSignals || '(no active signals)',
+        ...(recallText ? ['', recallText] : []),
       ].join('\n');
 
       const question = lang === 'zh'
